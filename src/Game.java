@@ -9,39 +9,39 @@ public class Game {
                 break;
 
             case "examine":
-            case "check":
-            case "inspect":
-            case "investigate":
-            case "study":
+            //case "check":
+            //case "inspect":
+            //case "investigate":
+            //case "study":
 
                 //to examine object
 
                 break;
 
             case "take":
-            case "collect":
-            case "grab":
-            case "hold":
-            case "pick up":
+            //case "collect":
+            //case "grab":
+            //case "hold":
+            //case "pick up":
 
                 //to object
 
                 break;
 
             case "walk":
-            case "step":
-            case "move":
-            case "go":
+            //case "step":
+            //case "move":
+            //case "go":
 
                 //north, south, east, west
 
                 break;
 
             case "put":
-            case "insert":
-            case "place":
-            case "set":
-            case "use":
+            //case "insert":
+            //case "place":
+            //case "set":
+            //case "use":
 
                 //use object in another
 
