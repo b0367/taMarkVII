@@ -11,4 +11,7 @@ public class Item {
 
     }
 
+    public String getDesc() {
+        return desc;
+    }
 }

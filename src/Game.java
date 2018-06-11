@@ -1,6 +1,6 @@
 public class Game {
 
-    public static void verbCheck(Item item, String verb){
+    public static void verbCheck(Player player, Item item, Room room, String verb){
 
         switch(verb.toLowerCase()){
 
@@ -9,39 +9,48 @@ public class Game {
                 break;
 
             case "examine":
-            //case "check":
-            //case "inspect":
-            //case "investigate":
-            //case "study":
+                //case "check":
+                //case "inspect":
+                //case "investigate":
+                //case "study":
 
-                //to examine object
+                System.out.println(item.getDesc());
 
                 break;
 
             case "take":
-            //case "collect":
-            //case "grab":
-            //case "hold":
-            //case "pick up":
+                //case "collect":
+                //case "grab":
+                //case "hold":
+                //case "pick up":
 
-                //to object
+                for(int i = 0; i < player.inventory.length; i++){
+
+                    if(player.inventory[i] == null){
+
+                        player.inventory[i] = item;
+
+
+                    }
+
+                }
 
                 break;
 
             case "walk":
-            //case "step":
-            //case "move":
-            //case "go":
+                //case "step":
+                //case "move":
+                //case "go":
 
                 //north, south, east, west
 
                 break;
 
             case "put":
-            //case "insert":
-            //case "place":
-            //case "set":
-            //case "use":
+                //case "insert":
+                //case "place":
+                //case "set":
+                //case "use":
 
                 //use object in another
 
@@ -79,7 +88,7 @@ public class Game {
 
                 break;
 
-                //player w/o object
+            //player w/o object
 
             case "say":
                 //when we get chat function
