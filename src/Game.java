@@ -30,6 +30,15 @@ public class Game {
 
                         player.inventory[i] = item;
 
+                        for(int j = 0; j < room.getContents().length; j++){
+
+                            if(room.getContents()[j].name.equals(" ")){
+
+                                room.getContents()[j] = null;
+
+                            }
+
+                        }
 
                     }
 

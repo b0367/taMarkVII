@@ -1,5 +1,7 @@
 public class Item {
 
+    String name;
+
     String desc; //examine
 
     boolean grabable;
