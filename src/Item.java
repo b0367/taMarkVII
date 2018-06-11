@@ -23,8 +23,10 @@ public class Item {
 
     }
 
-    public void move(){
+    public void put(){
 
     }
+
+
 
 }

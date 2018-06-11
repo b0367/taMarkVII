@@ -55,14 +55,6 @@ public class Game {
 
                 break;
 
-            case "sleep":
-
-                break;
-
-            case "sit":
-
-                break;
-
             case "switch":
 
                 break;
@@ -87,8 +79,18 @@ public class Game {
 
                 break;
 
+                //player w/o object
+
             case "say":
                 //when we get chat function
+                break;
+
+            case "sleep":
+
+                break;
+
+            case "sit":
+
                 break;
         }
 
