@@ -27,6 +27,8 @@ public class Item {
 
     }
 
+    public void give(){
 
+    }
 
 }
