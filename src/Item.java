@@ -4,12 +4,17 @@ public class Item {
 
     String desc; //examine
 
-    boolean grabable;
+    //takeable, insertable, edible, switchable, openable
+    boolean[] ables;
 
-    public Item(String _desc, boolean _grabable){
+    public Item(String _desc, boolean _grabable, boolean _insertable, boolean _edible, boolean _switchable, boolean _openable){
 
         desc = _desc;
-        grabable = _grabable;
+        ables[0] = _grabable;
+        ables[1] = _insertable;
+        ables[2] = _edible;
+        ables[3] = _switchable;
+        ables[4] = _openable;
 
     }
 
