@@ -4,7 +4,7 @@ public class Item {
 
     boolean grabable;
 
-    public void Item(String _desc, boolean _grabable){
+    public Item(String _desc, boolean _grabable){
 
         desc = _desc;
         grabable = _grabable;
