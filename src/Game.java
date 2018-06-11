@@ -29,12 +29,21 @@ public class Game {
                 //case "hold":
                 //case "pick up":
 
-                for (int i = 0; i < player.inventory.size(); i++) {
+                for(int i = 0; i < player.inventory.length; i++){
 
-                    if (player.inventory.get(i) == null) {
+                    if(player.inventory[i] == null){
 
-                        player.inventory.set(i, item);
+                        player.inventory[i] = item;
 
+                        for(int j = 0; j < room.getContents().length; j++){
+
+                            if(room.getContents()[j].name.equals(" ")){
+
+                                room.getContents()[j] = null;
+
+                            }
+
+                        }
 
                     }
 
