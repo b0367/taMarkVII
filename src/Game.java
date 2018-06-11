@@ -1,8 +1,13 @@
 public class Game {
 
-    public static void verbCheck(Player player, Item item, Room room, String verb){
-
-        switch(verb.toLowerCase()){
+    public static void doAction(Player player, Room room, String verb, String argument) {
+        Item item = null;
+        for (Item i : room.getContents()) {
+            //if(item.getName() == argument){
+            item = i;
+            //}
+        }
+        switch (verb.toLowerCase()) {
 
             case "look":
 
@@ -24,21 +29,12 @@ public class Game {
                 //case "hold":
                 //case "pick up":
 
-                for(int i = 0; i < player.inventory.length; i++){
+                for (int i = 0; i < player.inventory.size(); i++) {
 
-                    if(player.inventory[i] == null){
+                    if (player.inventory.get(i) == null) {
 
-                        player.inventory[i] = item;
+                        player.inventory.set(i, item);
 
-                        for(int j = 0; j < room.getContents().length; j++){
-
-                            if(room.getContents()[j].name.equals(" ")){
-
-                                room.getContents()[j] = null;
-
-                            }
-
-                        }
 
                     }
 
