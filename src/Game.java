@@ -1,6 +1,6 @@
 public class Game {
 
-    public void verbCheck(String verb){
+    public static void verbCheck(Item item, String verb){
 
         switch(verb.toLowerCase()){
 

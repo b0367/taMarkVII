@@ -11,24 +11,4 @@ public class Item {
 
     }
 
-    public void look(){
-
-    }
-
-    public void examine(){
-
-    }
-
-    public void take(){
-
-    }
-
-    public void put(){
-
-    }
-
-    public void give(){
-
-    }
-
 }
