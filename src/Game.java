@@ -1,15 +1,19 @@
 public class Game {
 
     public static void doAction(Player player, Room room, String verb, String argument) {
+
         Item item = null;
         for (Item i : room.getContents()) {
-            //if(item.getName() == argument){
-            item = i;
-            //}
-        }
+            if(item.getName().equals(argument)) {
+                item = i;
+                }
+            }
+
         switch (verb.toLowerCase()) {
 
             case "look":
+
+                room.getDesc();
 
                 break;
 
@@ -42,15 +46,6 @@ public class Game {
 
                 break;
 
-            case "walk":
-                //case "step":
-                //case "move":
-                //case "go":
-
-                //north, south, east, west
-
-                break;
-
             case "put":
                 //case "insert":
                 //case "place":
@@ -66,6 +61,21 @@ public class Game {
                 break;
 
             case "eat":
+
+                if(item.ables[2]){
+
+                    for(int i = 0; i < player.inventory.size(); i++){
+
+                        if(item.id == player.inventory.get(i).id){
+
+                            player.inventory.set(i,null);
+                            System.out.println("You ate the " + item.name);
+
+                        }
+
+                    }
+
+                }
 
                 break;
 
@@ -106,6 +116,34 @@ public class Game {
             case "sit":
 
                 break;
+
+            case "walk":
+                //case "step":
+                //case "move":
+                //case "go":
+
+                switch (argument.toLowerCase()){
+
+                    case "north":
+
+                        break;
+
+                    case "south":
+
+                        break;
+
+                    case "east":
+
+                        break;
+
+                    case "west":
+
+                        break;
+
+                }
+
+                break;
+
         }
 
     }
