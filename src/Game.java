@@ -2,9 +2,25 @@ import java.util.Scanner;
 
 public class Game {
 
+    private static String input;
+
     public static void main(String[]args){
 
+        Scanner console = new Scanner(System.in);
+        try{
 
+            input = console.nextLine();
+
+        }
+        catch (Exception e){
+
+            System.out.println("Invalid Input");
+
+        }
+
+        String[] entries = input.split(" ");
+
+        //doAction( player, room found by player's x and y, entries[0], find stuff);
 
     }
 
@@ -88,6 +104,17 @@ public class Game {
                 break;
 
             case "switch":
+
+                if(item.onDesc == null && item.offDesc == null){
+
+                    System.out.println("You cannot switch the " + item.name + " on or off.");
+
+                }
+                else{
+
+                    
+
+                }
 
                 break;
 

@@ -1,5 +1,17 @@
 public class Room {
 
+    private Item[] contents;
+    private String[] dirs;
+
+    private String desc;
+
+    public Room(Item[] contents, String desc, String[] dirs) {
+        this.contents = contents;
+        this.desc = desc;
+        this.dirs = dirs;
+
+    }
+
     public Item[] getContents() {
         return contents;
     }
@@ -7,8 +19,6 @@ public class Room {
     public void setContents(Item[] contents) {
         this.contents = contents;
     }
-
-    private Item[] contents;
 
     public String getDesc() {
         return desc;
@@ -18,8 +28,6 @@ public class Room {
         this.desc = desc;
     }
 
-    private String desc;
-
     public String[] getDirs() {
         return dirs;
     }
@@ -27,15 +35,5 @@ public class Room {
     public void setDirs(String[] dirs) {
         this.dirs = dirs;
     }
-
-    private String[] dirs;
-
-    public Room(Item[] contents, String desc, String[] dirs) {
-        this.contents = contents;
-        this.desc = desc;
-        this.dirs = dirs;
-
-    }
-
 
 }
