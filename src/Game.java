@@ -22,7 +22,7 @@ public class Game {
 
         if(entries[0] == "say"){
 
-
+            //need client server stuff
 
         }
 
@@ -41,27 +41,27 @@ public class Game {
 
         switch (verb.toLowerCase()) {
 
-            case "look":
+            case "look": //done
 
                 room.getDesc();
 
                 break;
 
-            case "examine":
-                //case "check":
-                //case "inspect":
-                //case "investigate":
-                //case "study":
+            case "examine": //done
+            case "check":
+            case "inspect":
+            case "investigate":
+            case "study":
 
                 System.out.println(item.getDesc());
 
                 break;
 
-            case "take":
-                //case "collect":
-                //case "grab":
-                //case "hold":
-                //case "pick up":
+            case "take": //done
+            case "collect":
+            case "grab":
+            case "hold":
+            case "pick up":
 
                 for (int i = 0; i < player.inventory.size(); i++) {
 
@@ -76,7 +76,7 @@ public class Game {
 
                 break;
 
-            case "put":
+            case "put": //unfinished
                 //case "insert":
                 //case "place":
                 //case "set":
@@ -86,11 +86,11 @@ public class Game {
 
                 break;
 
-            case "give":
+            case "give": //need server stuffs (pull?)
 
                 break;
 
-            case "eat":
+            case "eat": //done
 
                 if(item.ables[2]){
 
@@ -109,7 +109,7 @@ public class Game {
 
                 break;
 
-            case "switch":
+            case "switch": //done
 
                 if(item.onDesc == null && item.offDesc == null){
 
@@ -124,19 +124,19 @@ public class Game {
 
                 break;
 
-            case "smell":
+            case "smell": //done
 
                 System.out.println(item.smellDesc);
 
                 break;
 
-            case "taste":
+            case "taste": //done
 
                 System.out.println(item.tasteDesc);
 
                 break;
 
-            case "listen":
+            case "listen": //done
 
                 if(item.sound == null){
 
@@ -151,7 +151,7 @@ public class Game {
 
                 break;
 
-            case "open":
+            case "open": //done
 
                 if(item.ables[4]){
 
