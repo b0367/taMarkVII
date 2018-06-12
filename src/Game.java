@@ -20,6 +20,12 @@ public class Game {
 
         String[] entries = input.split(" ");
 
+        if(entries[0] == "say"){
+
+
+
+        }
+
         //doAction( player, room found by player's x and y, entries[0], find stuff);
 
     }
@@ -112,7 +118,7 @@ public class Game {
                 }
                 else{
 
-                    
+                    item.on = !item.on;
 
                 }
 
@@ -159,29 +165,35 @@ public class Game {
 
                     System.out.println();
 
+                    for(int j = 0; j < item.contains.length; j++){
+
+                        for(int l = 0; l < room.contents.length; l++) {
+
+                            room.contents[j] = item.contains[j];
+
+                        }
+
+                    }
+
                 }
 
                 break;
 
             //player w/o object
 
-            case "say":
+            case "sleep": //done
 
-                //when we get chat function
-
-
+                System.out.println("You aren't tired.");
 
                 break;
 
-            case "sleep":
+            case "sit": //done
+
+                System.out.println("You are now sitting.");
 
                 break;
 
-            case "sit":
-
-                break;
-
-            case "walk":
+            case "walk": //needs map
                 //case "step":
                 //case "move":
                 //case "go":

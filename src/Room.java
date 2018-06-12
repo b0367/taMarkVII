@@ -1,6 +1,6 @@
 public class Room {
 
-    private Item[] contents;
+    public Item[] contents;
     private String[] dirs;
 
     private String desc;
