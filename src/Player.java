@@ -5,6 +5,6 @@ public class Player {
     int x;
     int y;
 
-    ArrayList<Item> inventory;
+    ArrayList<Item> inventory = new ArrayList<>();
 
 }

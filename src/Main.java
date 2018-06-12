@@ -13,7 +13,7 @@ public class Main {
     }
 
     public static void initialize() {
-        Room[] line = {new Room(new Item[]{new Item("A simple iron key.", "Doesn't smell like much", "", "", "", "", false, true, true, false, false, false)}, "room number 1", new String[]{"e"}), new Room(new Item[]{}, "room number 2", new String[]{"w"})};
+        Room[] line = {new Room(new Item[]{new Item("key","A simple iron key.", "Doesn't smell like much", "", "", "", "", false, true, true, false, false, false)}, "room number 1", new String[]{"e"}), new Room(new Item[]{}, "room number 2", new String[]{"w"})};
         map.add(new ArrayList<>(Arrays.asList(line)));
 
     }
@@ -24,7 +24,6 @@ public class Main {
         while (!input.equals("quit")) {
             input = s.nextLine();
             String[] inputList = input.split("\\s+");
-            System.out.println(inputList[1]);
             if (inputList.length >= 2) {
                 Game.doAction(p1, map.get(p1.y).get(p1.x), input.split("\\s+")[0], input.split("\\s+")[1]);
             } else {

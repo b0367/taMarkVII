@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Game {
@@ -32,7 +33,6 @@ public class Game {
     public static void doAction(Player player, Room room, String verb, String argument) {
 
         Item item = null;
-        System.out.println(room.getContents());
         for (Item i : room.getContents()) {
             if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
                 item = i;

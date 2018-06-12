@@ -17,8 +17,9 @@ public class Item {
 
     Item[] contains;
 
-    public Item(String _desc, String _smellDesc, String _tasteDesc, String _sound, String _onDesc, String _offDesc, boolean _on, boolean _grabable, boolean _insertable, boolean _edible, boolean _switchable, boolean _openable){
+    public Item(String _name, String _desc, String _smellDesc, String _tasteDesc, String _sound, String _onDesc, String _offDesc, boolean _on, boolean _grabable, boolean _insertable, boolean _edible, boolean _switchable, boolean _openable){
 
+        name = _name;
         desc = _desc;
         smellDesc = _smellDesc;
         tasteDesc = _tasteDesc;
