@@ -4,15 +4,14 @@ public class Game {
 
     private static String input;
 
-    public static void main(String[]args){
+    public static void main(String[] args) {
 
         Scanner console = new Scanner(System.in);
-        try{
+        try {
 
             input = console.nextLine();
 
-        }
-        catch (Exception e){
+        } catch (Exception e) {
 
             System.out.println("Invalid Input");
 
@@ -20,7 +19,7 @@ public class Game {
 
         String[] entries = input.split(" ");
 
-        if(entries[0] == "say"){
+        if (entries[0] == "say") {
 
             //need client server stuff
 
@@ -33,11 +32,12 @@ public class Game {
     public static void doAction(Player player, Room room, String verb, String argument) {
 
         Item item = null;
+        System.out.println(room.getContents());
         for (Item i : room.getContents()) {
-            if(item.getName().equals(argument)) {
+            if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
                 item = i;
-                }
             }
+        }
 
         switch (verb.toLowerCase()) {
 
@@ -53,7 +53,12 @@ public class Game {
             case "investigate":
             case "study":
 
-                System.out.println(item.getDesc());
+                if (item == null) {
+                    System.out.println("You have not provided an item.");
+                    break;
+                } else {
+                    System.out.println(item.getDesc());
+                }
 
                 break;
 
@@ -92,13 +97,13 @@ public class Game {
 
             case "eat": //done
 
-                if(item.ables[2]){
+                if (item.ables[2]) {
 
-                    for(int i = 0; i < player.inventory.size(); i++){
+                    for (int i = 0; i < player.inventory.size(); i++) {
 
-                        if(item.id == player.inventory.get(i).id){
+                        if (item.id == player.inventory.get(i).id) {
 
-                            player.inventory.set(i,null);
+                            player.inventory.set(i, null);
                             System.out.println("You ate the " + item.name);
 
                         }
@@ -111,12 +116,11 @@ public class Game {
 
             case "switch": //done
 
-                if(item.onDesc == null && item.offDesc == null){
+                if (item.onDesc == null && item.offDesc == null) {
 
                     System.out.println("You cannot switch the " + item.name + " on or off.");
 
-                }
-                else{
+                } else {
 
                     item.on = !item.on;
 
@@ -138,12 +142,11 @@ public class Game {
 
             case "listen": //done
 
-                if(item.sound == null){
+                if (item.sound == null) {
 
                     System.out.println("You can hear no sound from the " + item.name);
 
-                }
-                else{
+                } else {
 
                     System.out.println(item.sound);
 
@@ -153,11 +156,11 @@ public class Game {
 
             case "open": //done
 
-                if(item.ables[4]){
+                if (item.ables[4]) {
 
                     System.out.print("The " + item.name + " has inside a/an ");
 
-                    for(int i = 0; i < item.contains.length; i++){
+                    for (int i = 0; i < item.contains.length; i++) {
 
                         System.out.print(item.contains[i].name + ", ");
 
@@ -165,9 +168,9 @@ public class Game {
 
                     System.out.println();
 
-                    for(int j = 0; j < item.contains.length; j++){
+                    for (int j = 0; j < item.contains.length; j++) {
 
-                        for(int l = 0; l < room.contents.length; l++) {
+                        for (int l = 0; l < room.contents.length; l++) {
 
                             room.contents[j] = item.contains[j];
 
@@ -198,7 +201,7 @@ public class Game {
                 //case "move":
                 //case "go":
 
-                switch (argument.toLowerCase()){
+                switch (argument.toLowerCase()) {
 
                     case "north":
 
