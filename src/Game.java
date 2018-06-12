@@ -1,4 +1,12 @@
+import java.util.Scanner;
+
 public class Game {
+
+    public static void main(String[]args){
+
+
+
+    }
 
     public static void doAction(Player player, Room room, String verb, String argument) {
 
@@ -85,28 +93,57 @@ public class Game {
 
             case "smell":
 
+                System.out.println(item.smellDesc);
+
                 break;
 
             case "taste":
+
+                System.out.println(item.tasteDesc);
 
                 break;
 
             case "listen":
 
-                break;
+                if(item.sound == null){
 
-            case "show":
+                    System.out.println("You can hear no sound from the " + item.name);
+
+                }
+                else{
+
+                    System.out.println(item.sound);
+
+                }
 
                 break;
 
             case "open":
+
+                if(item.ables[4]){
+
+                    System.out.print("The " + item.name + " has inside a/an ");
+
+                    for(int i = 0; i < item.contains.length; i++){
+
+                        System.out.print(item.contains[i].name + ", ");
+
+                    }
+
+                    System.out.println();
+
+                }
 
                 break;
 
             //player w/o object
 
             case "say":
+
                 //when we get chat function
+
+
+
                 break;
 
             case "sleep":
