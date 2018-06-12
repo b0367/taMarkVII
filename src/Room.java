@@ -1,13 +1,23 @@
 import com.sun.deploy.util.StringUtils;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class Room {
 
     public Item[] contents;
     private String[] dirs;
 
-    private String desc = "";
+    private String desc;
+    private static final HashMap<String, String> directions = new HashMap<>();
+
+    static {
+        directions.put("w", "west");
+        directions.put("n", "north");
+        directions.put("s", "south");
+        directions.put("e", "east");
+
+    }
 
     public Room(Item[] contents, String desc, String[] dirs) {
         this.contents = contents;
@@ -40,13 +50,17 @@ public class Room {
         this.dirs = dirs;
     }
 
-    public String fullDesc(){
-        String contentsStr = "";
-        if(contents.length == 0) {
+    public String fullDesc() {
+        String contentsStr;
+        if (contents.length == 0) {
             contentsStr = "No visible items in the room.";
-        }else{
+        } else {
             contentsStr = Arrays.toString(contents);
         }
-        return desc + "\n" + StringUtils.join(Arrays.asList(dirs), ", ") + "\n" + contentsStr;
+        String dirString = "";
+        for(String d : dirs){
+            dirString += directions.get(d);
+        }
+        return desc + "\n" + "The visible exits in this room are to the " + dirString + "\n" + contentsStr;
     }
 }

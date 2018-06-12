@@ -1,4 +1,4 @@
-import java.util.Arrays;
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Game {
@@ -20,11 +20,7 @@ public class Game {
 
         String[] entries = input.split(" ");
 
-        if (entries[0] == "say") {
-
-            //need client server stuff
-
-        }
+        Objects.equals(entries[0], "say");
 
         //doAction( player, room found by player's x and y, entries[0], find stuff);
 
@@ -33,17 +29,18 @@ public class Game {
     public static void doAction(Player player, Room room, String verb, String argument) {
 
         Item item = null;
-        for (Item i : room.getContents()) {
+        for (Item i : player.inventory) {
             if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
                 item = i;
             }
         }
 
+
         switch (verb.toLowerCase()) {
 
             case "look": //done
 
-                room.getDesc();
+                System.out.println(room.getDesc());
 
                 break;
 
@@ -67,16 +64,15 @@ public class Game {
             case "grab":
             case "hold":
             case "pick up":
-
-                for (int i = 0; i < player.inventory.size(); i++) {
-
-                    if (player.inventory.get(i) == null) {
-
-                        player.inventory.set(i, item);
-
-
+                Item invItem = null;
+                for (Item i : room.getContents()) {
+                    if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
+                        invItem = i;
                     }
-
+                }
+                if (invItem != null) {
+                    player.inventory.add(invItem);
+                    System.out.println("You picked up the " + invItem.getName());
                 }
 
                 break;
@@ -96,21 +92,28 @@ public class Game {
                 break;
 
             case "eat": //done
+                try{
+                    if (item.ables[2]) {
 
-                if (item.ables[2]) {
+                        for (int i = 0; i < player.inventory.size(); i++) {
 
-                    for (int i = 0; i < player.inventory.size(); i++) {
+                            if (item.id == player.inventory.get(i).id) {
 
-                        if (item.id == player.inventory.get(i).id) {
+                                player.inventory.set(i, null);
+                                System.out.println("You ate the " + item.name);
 
-                            player.inventory.set(i, null);
-                            System.out.println("You ate the " + item.name);
+                            }
 
                         }
 
+                    }else{
+                        System.out.println("You can't eat the " + item.getName());
                     }
-
+                }catch(NullPointerException e){
+                    System.out.println("You do not have that item.");
                 }
+
+
 
                 break;
 
@@ -129,15 +132,20 @@ public class Game {
                 break;
 
             case "smell": //done
-
-                System.out.println(item.smellDesc);
+                if (item != null) {
+                    System.out.println(item.smellDesc == "" || item.smellDesc == null ? "Doesn't smell like much" : item.smellDesc);
+                } else {
+                    System.out.println("You do not have that item.");
+                }
 
                 break;
 
             case "taste": //done
-
-                System.out.println(item.tasteDesc);
-
+                if (item != null) {
+                    System.out.println(item.tasteDesc == "" || item.tasteDesc == null ? "Doesn't taste like much" : item.tasteDesc);
+                } else {
+                    System.out.println("You do not have that item.");
+                }
                 break;
 
             case "listen": //done
@@ -197,30 +205,54 @@ public class Game {
                 break;
 
             case "walk": //needs map
-                //case "step":
-                //case "move":
-                //case "go":
+            case "step":
+            case "move":
+            case "go":
 
                 switch (argument.toLowerCase()) {
 
-                    case "north":
-
+                    case "n":
+                        if (player.y >= 1) {
+                            player.y--;
+                        } else {
+                            System.out.println("You can't go that way.");
+                        }
                         break;
 
-                    case "south":
+                    case "s":
+                        if (player.y < Main.map.size() - 1) {
+                            try {
+                                player.y++;
 
+                            } catch (IndexOutOfBoundsException e) {
+                                System.out.println("You can't go that way.");
+                            }
+                        } else {
+                            System.out.println("You can't go that way.");
+                        }
                         break;
 
-                    case "east":
-
+                    case "e":
+                        if (player.x < Main.map.get(player.y).size() - 1) {
+                            player.x++;
+                        } else {
+                            System.out.println("You can't go that way.");
+                        }
                         break;
 
-                    case "west":
-
+                    case "w":
+                        if (player.x >= 1) {
+                            player.x--;
+                        } else {
+                            System.out.println("You can't go that way.");
+                        }
                         break;
 
                 }
 
+                break;
+            default:
+                System.out.println("Unknown command");
                 break;
 
         }

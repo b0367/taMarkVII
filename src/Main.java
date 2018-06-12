@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -29,6 +30,7 @@ public class Main {
             } else {
                 Game.doAction(p1, map.get(p1.y).get(p1.x), input.split("\\s+")[0], "");
             }
+            System.out.println(map.get(p1.y).get(p1.x).fullDesc());
         }
     }
 
