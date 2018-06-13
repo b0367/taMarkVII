@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -10,7 +11,11 @@ public class Main {
 
     public static void main(String args[]) {
         initialize();
-        run();
+        try {
+            run();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void initialize() {
@@ -20,13 +25,12 @@ public class Main {
 
     static String input = "";
 
-    private static void run() {
+    private static void run() throws IOException, InterruptedException {
         System.out.println(map.get(p1.y).get(p1.x).fullDesc());
         while (!input.equals("quit")) {
 
             input = s.nextLine();
-            printManyTimes("\b", 200);
-            System.out.flush();
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
             String[] inputList = input.split("\\s+", 2);
             if (inputList.length >= 2) {
                 Game.doAction(p1, map.get(p1.y).get(p1.x), input.split("\\s+")[0], inputList[1]);
@@ -35,12 +39,6 @@ public class Main {
             }
             System.out.println(map.get(p1.y).get(p1.x).fullDesc());
         }
-    }
-    public static void printManyTimes(String toPrint, int times){
-        for(int i = 0; i < times; i++){
-            System.out.print(toPrint);
-        }
-        System.out.println();
     }
 
 }

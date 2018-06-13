@@ -1,5 +1,3 @@
-import com.sun.jmx.snmp.InetAddressAcl;
-
 import java.net.*;
 import java.util.ArrayList;
 
@@ -16,9 +14,9 @@ public class Server {
 
             socket.receive(request);
             System.out.println(new String(buffer, 0,request.getLength()));
-            //buffer = "".getBytes();
-            //DatagramPacket response = new DatagramPacket(buffer, buffer.length, request.getAddress(), request.getPort());
-            //socket.send(response);
+            buffer = "".getBytes();
+            DatagramPacket response = new DatagramPacket(buffer, buffer.length, request.getAddress(), request.getPort());
+            socket.send(response);
         }
     }
     public static boolean ipIsInList(InetAddress adr){

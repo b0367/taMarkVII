@@ -1,3 +1,5 @@
+import com.sun.deploy.util.ArrayUtil;
+
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -73,6 +75,7 @@ public class Game {
                 }
                 if (invItem != null) {
                     player.inventory.add(invItem);
+                    room.contents[Arrays.asList(room.contents).indexOf(invItem)] = null;
                     System.out.println("You picked up the " + invItem.getName());
                 }
 
