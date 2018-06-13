@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -82,9 +83,15 @@ public class Game {
                 //case "place":
                 //case "set":
                 //case "use":
-
-                //use object in another
-
+                if(argument.split("\\s+").length == 3){
+                    if(!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))){
+                        System.out.println("You do not have that item.");
+                    }else{
+                        //check for door
+                    }
+                }else{
+                    System.out.println("Wrong number of arguments");
+                }
                 break;
 
             case "give": //need server stuffs (pull?)

@@ -17,7 +17,7 @@ public class Item {
 
     Item[] contains;
 
-    public Item(String _name, String _desc, String _smellDesc, String _tasteDesc, String _sound, String _onDesc, String _offDesc, boolean _on, boolean _grabable, boolean _insertable, boolean _edible, boolean _switchable, boolean _openable){
+    public Item(String _name, String _desc, String _smellDesc, String _tasteDesc, String _sound, String _onDesc, String _offDesc, boolean _on, boolean _grabable, boolean _insertable, boolean _edible, boolean _switchable, boolean _openable) {
 
         name = _name;
         desc = _desc;
@@ -47,9 +47,9 @@ public class Item {
 
     public void addContains(Item entry) {
 
-        for(int i = 0; i < contains.length;  i++){
+        for (int i = 0; i < contains.length; i++) {
 
-            if(contains[i] == null){
+            if (contains[i] == null) {
 
                 contains[i] = entry;
 
@@ -57,5 +57,12 @@ public class Item {
 
         }
 
+    }
+
+    public String toString() {
+        return this.name;
+    }
+    public static Item createBlankItem(String name){
+        return new Item(name, "", "", "","","","",false,false,false,false,false,false);
     }
 }
