@@ -90,7 +90,23 @@ public class Game {
                     if(!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))){
                         System.out.println("You do not have that item.");
                     }else{
+                        for(int i = 0; i < room.getLocks().length; i++){
 
+                            try {
+
+                                if (item.id.equals(room.getLocks()[i])) {
+
+                                    room.getLocks()[i] = null;
+                                    System.out.println("YOu have unlocked the " + room.getDirs()[i] + " door!");
+
+                                }
+
+                            }catch (Exception e){
+
+                                System.out.println("You have no keys for the doors in this room!");
+
+                            }
+                        }
                     }
                 }else{
                     System.out.println("Wrong number of arguments");
