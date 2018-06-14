@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="11eb9097-dce4-4893-b45f-c38d06bb8a8d" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/out/production/taMarkVII/Game.class" afterPath="$PROJECT_DIR$/out/production/taMarkVII/Game.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/taMarkVII/Main.class" afterPath="$PROJECT_DIR$/out/production/taMarkVII/Main.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/taMarkVII/Room.class" afterPath="$PROJECT_DIR$/out/production/taMarkVII/Room.class" />
-      <change beforePath="$PROJECT_DIR$/out/production/taMarkVII/Server.class" afterPath="$PROJECT_DIR$/out/production/taMarkVII/Server.class" />
-      <change beforePath="$PROJECT_DIR$/src/Game.java" afterPath="$PROJECT_DIR$/src/Game.java" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" afterPath="$PROJECT_DIR$/src/Main.java" />
-      <change beforePath="$PROJECT_DIR$/src/Room.java" afterPath="$PROJECT_DIR$/src/Room.java" />
-    </list>
+    <list default="true" id="11eb9097-dce4-4893-b45f-c38d06bb8a8d" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -38,7 +29,7 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="70">
+            <state relative-caret-position="274">
               <caret line="230" column="65" lean-forward="false" selection-start-line="230" selection-start-column="65" selection-end-line="230" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -627,7 +618,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="70">
+        <state relative-caret-position="274">
           <caret line="230" column="65" lean-forward="false" selection-start-line="230" selection-start-column="65" selection-end-line="230" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
