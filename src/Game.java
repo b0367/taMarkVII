@@ -72,7 +72,7 @@ public class Game {
             case "pick up":
                 Item invItem = null;
                 for (Item i : room.getContents()) {
-                    if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
+                    if (i.getName().toLowerCase().equals(item.name.toLowerCase())) {
                         invItem = i;
                     }
                 }
