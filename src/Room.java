@@ -5,6 +5,7 @@ public class Room {
 
     public Item[] contents;
     private String[] dirs;
+    private String[] locks;
 
     private String desc;
     private static final HashMap<String, String> directions = new HashMap<>();
@@ -17,10 +18,11 @@ public class Room {
 
     }
 
-    public Room(Item[] contents, String desc, String[] dirs) {
+    public Room(Item[] contents, String desc, String[] dirs, String[] locks) {
         this.contents = contents;
         this.desc = desc;
         this.dirs = dirs;
+        this.locks = locks;
 
     }
 
@@ -60,5 +62,17 @@ public class Room {
             dirString += directions.get(d);
         }
         return desc + "\n" + "The visible exits in this room are to the " + dirString + "\n" + contentsStr;
+    }
+
+    public String[] getLocks() {
+        return locks;
+    }
+
+    public boolean leaveRoom(){
+
+
+
+        return true;
+
     }
 }

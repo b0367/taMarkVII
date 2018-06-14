@@ -19,7 +19,7 @@ public class Main {
     }
 
     public static void initialize() {
-        Room[] line = {new Room(new Item[]{new Item("key","A simple iron key.", "Doesn't smell like much", "", "", "", "", false, true, true, false, false, false)}, "room number 1", new String[]{"e"}), new Room(new Item[]{}, "room number 2", new String[]{"w"})};
+        Room[] line = {new Room(new Item[]{new Item("key","A simple iron key.", "Doesn't smell like much", "", "", "", "", false, true, true, false, false, false)},"room number 1", new String[]{"e"}, new String[] {null}), new Room(new Item[]{}, "room number 2", new String[]{"w"},new String[] {null})};
         map.add(new ArrayList<>(Arrays.asList(line)));
     }
 

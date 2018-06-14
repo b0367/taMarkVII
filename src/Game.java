@@ -90,7 +90,7 @@ public class Game {
                     if(!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))){
                         System.out.println("You do not have that item.");
                     }else{
-                        //check for door
+
                     }
                 }else{
                     System.out.println("Wrong number of arguments");
@@ -223,7 +223,25 @@ public class Game {
 
                     case "n":
                         if (player.y >= 1) {
-                            player.y--;
+
+                            for(int i = 0; i < room.getDirs().length; i++){
+
+                                if(room.getDirs()[i].equals("n")){
+
+                                    if(room.getLocks()[i] == null){
+
+                                        player.y--;
+
+                                    }else{
+
+                                        System.out.println("Please Insert a Key.");
+
+                                    }
+
+                                }
+
+                            }
+
                         } else {
                             System.out.println("You can't go that way.");
                         }
@@ -232,7 +250,23 @@ public class Game {
                     case "s":
                         if (player.y < Main.map.size() - 1) {
                             try {
-                                player.y++;
+                                for(int i = 0; i < room.getDirs().length; i++){
+
+                                    if(room.getDirs()[i].equals("s")){
+
+                                        if(room.getLocks()[i] == null){
+
+                                            player.y++;
+
+                                        }else{
+
+                                            System.out.println("Please Insert a Key.");
+
+                                        }
+
+                                    }
+
+                                }
 
                             } catch (IndexOutOfBoundsException e) {
                                 System.out.println("You can't go that way.");
@@ -244,7 +278,23 @@ public class Game {
 
                     case "e":
                         if (player.x < Main.map.get(player.y).size() - 1) {
-                            player.x++;
+                            for(int i = 0; i < room.getDirs().length; i++){
+
+                                if(room.getDirs()[i].equals("e")){
+
+                                    if(room.getLocks()[i] == null){
+
+                                        player.x++;
+
+                                    }else{
+
+                                        System.out.println("Please Insert a Key.");
+
+                                    }
+
+                                }
+
+                            }
                         } else {
                             System.out.println("You can't go that way.");
                         }
@@ -252,7 +302,23 @@ public class Game {
 
                     case "w":
                         if (player.x >= 1) {
-                            player.x--;
+                            for(int i = 0; i < room.getDirs().length; i++){
+
+                                if(room.getDirs()[i].equals("w")){
+
+                                    if(room.getLocks()[i] == null){
+
+                                        player.x--;
+
+                                    }else{
+
+                                        System.out.println("Please Insert a Key.");
+
+                                    }
+
+                                }
+
+                            }
                         } else {
                             System.out.println("You can't go that way.");
                         }
