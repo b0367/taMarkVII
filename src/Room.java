@@ -8,7 +8,7 @@ public class Room {
     private String[] locks;
 
     private String desc;
-    private static final HashMap<String, String> directions = new HashMap<>();
+    public static final HashMap<String, String> directions = new HashMap<>();
 
     static {
         directions.put("w", "west");

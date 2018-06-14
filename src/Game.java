@@ -85,10 +85,10 @@ public class Game {
                 break;
 
             case "put": //unfinished
-                //case "insert":
-                //case "place":
-                //case "set":
-                //case "use":
+            case "insert":
+            case "place":
+            case "set":
+            case "use":
                 if (argument.split("\\s+").length == 3) {
                     if (!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))) {
                         System.out.println("You do not have that item.");
@@ -99,7 +99,7 @@ public class Game {
                                 if (item != null && item.id.equals(room.getLocks()[i])) {
 
                                     room.getLocks()[i] = null;
-                                    System.out.println("YOu have unlocked the " + room.getDirs()[i] + " door!");
+                                    System.out.println("You have unlocked the door to the " + Room.directions.get(room.getDirs()[i]));
 
                                 }
 
