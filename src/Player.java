@@ -11,6 +11,7 @@ public class Player {
             if(i.getName().equals(item.getName())){
                 return true;
             }
+
         }
         return false;
     }

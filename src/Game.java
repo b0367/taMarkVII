@@ -32,9 +32,12 @@ public class Game {
     public static void doAction(Player player, Room room, String verb, String argument) {
 
         Item item = null;
-        for (Item i : player.inventory) {
-            if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
-                item = i;
+        String[] argumentList = argument.split("\\s+");
+        for (String anArgumentList : argumentList) {
+            for (Item i : player.inventory) {
+                if (i.getName().toLowerCase().equals(anArgumentList)) {
+                    item = i;
+                }
             }
         }
 
@@ -86,29 +89,28 @@ public class Game {
                 //case "place":
                 //case "set":
                 //case "use":
-                if(argument.split("\\s+").length == 3){
-                    if(!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))){
+                if (argument.split("\\s+").length == 3) {
+                    if (!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))) {
                         System.out.println("You do not have that item.");
-                    }else{
-                        for(int i = 0; i < room.getLocks().length; i++){
+                    } else {
+                        for (int i = 0; i < room.getLocks().length; i++) {
 
                             try {
-
-                                if (item.id.equals(room.getLocks()[i])) {
+                                if (item != null && item.id.equals(room.getLocks()[i])) {
 
                                     room.getLocks()[i] = null;
                                     System.out.println("YOu have unlocked the " + room.getDirs()[i] + " door!");
 
                                 }
 
-                            }catch (Exception e){
+                            } catch (Exception e) {
 
                                 System.out.println("You have no keys for the doors in this room!");
 
                             }
                         }
                     }
-                }else{
+                } else {
                     System.out.println("Wrong number of arguments");
                 }
                 break;
@@ -118,12 +120,12 @@ public class Game {
                 break;
 
             case "eat": //done
-                try{
+                try {
                     if (item.ables[2]) {
 
                         for (int i = 0; i < player.inventory.size(); i++) {
 
-                            if (item.id == player.inventory.get(i).id) {
+                            if (item.id.equals(player.inventory.get(i).id)) {
 
                                 player.inventory.set(i, null);
                                 System.out.println("You ate the " + item.name);
@@ -132,13 +134,12 @@ public class Game {
 
                         }
 
-                    }else{
+                    } else {
                         System.out.println("You can't eat the " + item.getName());
                     }
-                }catch(NullPointerException e){
+                } catch (NullPointerException e) {
                     System.out.println("You do not have that item.");
                 }
-
 
 
                 break;
@@ -190,7 +191,7 @@ public class Game {
 
             case "open": //done
 
-                if (item.ables[4]) {
+                if (item != null && item.ables[4]) {
 
                     System.out.print("The " + item.name + " has inside a/an ");
 
@@ -212,6 +213,8 @@ public class Game {
 
                     }
 
+                } else {
+                    System.out.println("That is not a valid item to open.");
                 }
 
                 break;
@@ -240,15 +243,15 @@ public class Game {
                     case "n":
                         if (player.y >= 1) {
 
-                            for(int i = 0; i < room.getDirs().length; i++){
+                            for (int i = 0; i < room.getDirs().length; i++) {
 
-                                if(room.getDirs()[i].equals("n")){
+                                if (room.getDirs()[i].equals("n")) {
 
-                                    if(room.getLocks()[i] == null){
+                                    if (room.getLocks()[i] == null) {
 
                                         player.y--;
 
-                                    }else{
+                                    } else {
 
                                         System.out.println("Please Insert a Key.");
 
@@ -266,15 +269,15 @@ public class Game {
                     case "s":
                         if (player.y < Main.map.size() - 1) {
                             try {
-                                for(int i = 0; i < room.getDirs().length; i++){
+                                for (int i = 0; i < room.getDirs().length; i++) {
 
-                                    if(room.getDirs()[i].equals("s")){
+                                    if (room.getDirs()[i].equals("s")) {
 
-                                        if(room.getLocks()[i] == null){
+                                        if (room.getLocks()[i] == null) {
 
                                             player.y++;
 
-                                        }else{
+                                        } else {
 
                                             System.out.println("Please Insert a Key.");
 
@@ -294,15 +297,15 @@ public class Game {
 
                     case "e":
                         if (player.x < Main.map.get(player.y).size() - 1) {
-                            for(int i = 0; i < room.getDirs().length; i++){
+                            for (int i = 0; i < room.getDirs().length; i++) {
 
-                                if(room.getDirs()[i].equals("e")){
+                                if (room.getDirs()[i].equals("e")) {
 
-                                    if(room.getLocks()[i] == null){
+                                    if (room.getLocks()[i] == null) {
 
                                         player.x++;
 
-                                    }else{
+                                    } else {
 
                                         System.out.println("Please Insert a Key.");
 
@@ -318,15 +321,15 @@ public class Game {
 
                     case "w":
                         if (player.x >= 1) {
-                            for(int i = 0; i < room.getDirs().length; i++){
+                            for (int i = 0; i < room.getDirs().length; i++) {
 
-                                if(room.getDirs()[i].equals("w")){
+                                if (room.getDirs()[i].equals("w")) {
 
-                                    if(room.getLocks()[i] == null){
+                                    if (room.getLocks()[i] == null) {
 
                                         player.x--;
 
-                                    }else{
+                                    } else {
 
                                         System.out.println("Please Insert a Key.");
 
