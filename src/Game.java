@@ -1,5 +1,3 @@
-import com.sun.deploy.util.ArrayUtil;
-
 import java.util.Arrays;
 import java.util.Objects;
 import java.util.Scanner;
@@ -72,7 +70,7 @@ public class Game {
             case "pick up":
                 Item invItem = null;
                 for (Item i : room.getContents()) {
-                    if (i.getName().toLowerCase().equals(item.name.toLowerCase())) {
+                    if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
                         invItem = i;
                     }
                 }
