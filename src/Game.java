@@ -69,9 +69,9 @@ public class Game {
             case "hold":
             case "pick up":
                 Item invItem = null;
-                for (Item i : room.getContents()) {
-                    if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
-                        invItem = i;
+                for (int i = 0; i < room.contents.length; i++) {
+                    if (room.getContents()[i] != null && room.contents[i].getName().toLowerCase().equals(argument.toLowerCase())) {
+                        invItem = room.contents[i];
                     }
                 }
                 if (invItem != null) {
