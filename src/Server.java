@@ -1,30 +1,79 @@
-import java.net.*;
-import java.util.ArrayList;
+import java.net.*; // Imported because the Socket class is needed
+import java.util.HashSet;
 
 public class Server {
-    private static ArrayList<InetSocketAddress> clientIps = new ArrayList<>();
+
+    private static HashSet<Integer> portSet = new HashSet<Integer>();
 
     public static void main(String args[]) throws Exception {
-        DatagramSocket socket = new DatagramSocket(null);
-        socket.bind(new InetSocketAddress("10.0.0.142", 7777));
-        byte[] buffer = new byte[217000000];
 
-        DatagramPacket request = new DatagramPacket(buffer, buffer.length);
-        while (true) {
+        // The default port
+        int serverport = 7777;
 
-            socket.receive(request);
-            System.out.println(new String(buffer, 0,request.getLength()));
-            buffer = "".getBytes();
-            DatagramPacket response = new DatagramPacket(buffer, buffer.length, request.getAddress(), request.getPort());
-            socket.send(response);
+        if (args.length < 1) {
+            System.out.println("Usage: UDPServer " + "Now using Port# = " + serverport);
         }
-    }
-    public static boolean ipIsInList(InetAddress adr){
-        for(InetSocketAddress i : clientIps){
-            if(adr.equals(i.getAddress())){
-                return true;
+        // Get the port number & host to use from the command line
+        else {
+            serverport = Integer.valueOf(args[0]).intValue();
+            System.out.println("Usage: UDPServer " + "Now using Port# = " + serverport);
+        }
+
+        // Open a new datagram socket on the specified port
+        DatagramSocket udpServerSocket = new DatagramSocket(serverport);
+
+        System.out.println("Server started...\n");
+
+        while(true)
+        {
+            // Create byte buffers to hold the messages to send and receive
+            byte[] receiveData = new byte[1024];
+
+            // Create an empty DatagramPacket packet
+            DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
+
+            // Block until there is a packet to receive, then receive it  (into our empty packet)
+            udpServerSocket.receive(receivePacket);
+
+            // Extract the message from the packet and make it into a string, then trim off any end characters
+            String clientMessage = (new String(receivePacket.getData())).trim();
+
+            // Print some status messages
+            System.out.println("Client Connected - Socket Address: " + receivePacket.getSocketAddress());
+            System.out.println("Client message: \"" + clientMessage + "\"");
+
+            // Get the IP address and the the port number which the received connection came from
+            InetAddress clientIP = receivePacket.getAddress();
+
+            // Print out status message
+            System.out.println("Client IP Address & Hostname: " + clientIP + ", " + clientIP.getHostName() + "\n");
+
+            // Get the port number which the recieved connection came from
+            int clientport = receivePacket.getPort();
+            System.out.println("Adding "+clientport);
+            portSet.add(clientport);
+
+            // Response message
+            String returnMessage = clientMessage.toUpperCase();
+            System.out.println(returnMessage);
+            // Create an empty buffer/array of bytes to send back
+            byte[] sendData  = new byte[1024];
+
+            // Assign the message to the send buffer
+            sendData = returnMessage.getBytes();
+
+            for(Integer port : portSet)
+            {
+                System.out.println(port != clientport);
+                if(port != clientport)
+                {
+                    // Create a DatagramPacket to send, using the buffer, the clients IP address, and the clients port
+                    DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, clientIP, port);
+                    System.out.println("Sending");
+                    // Send the echoed message
+                    udpServerSocket.send(sendPacket);
+                }
             }
         }
-        return false;
     }
 }

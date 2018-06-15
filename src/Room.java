@@ -57,9 +57,9 @@ public class Room {
         } else {
             contentsStr = Arrays.toString(contents);
         }
-        String dirString = "";
+        StringBuilder dirString = new StringBuilder();
         for(String d : dirs){
-            dirString += directions.get(d);
+            dirString.append(directions.get(d));
         }
         return desc + "\n" + "The visible exits in this room are to the " + dirString + "\n" + contentsStr;
     }

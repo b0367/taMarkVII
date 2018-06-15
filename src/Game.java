@@ -51,7 +51,7 @@ public class Game {
 
             case "look": //done
 
-                System.out.println(room.getDesc());
+                System.out.println(room.fullDesc());
 
                 break;
 
@@ -94,9 +94,10 @@ public class Game {
             case "place":
             case "set":
             case "use":
-                if (argument.split("\\s+").length == 3) {
-                    if (!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0])) && !player.hasItem(Item.createBlankItem(argument))) {
+                if (argument.toLowerCase().split("\\s+").length == 3) {
+                    if (!player.hasItem(Item.createBlankItem(argument.toLowerCase().split("\\s+")[0])) && !player.hasItem(Item.createBlankItem(argument.toLowerCase()))) {
 
+                        System.out.println(item.name.toLowerCase());
                         System.out.println("You do not have that item.");
                     } else {
                         for (int i = 0; i < room.getLocks().length; i++) {
@@ -106,6 +107,10 @@ public class Game {
 
                                     room.getLocks()[i] = null;
                                     System.out.println("You have unlocked the door to the " + Room.directions.get(room.getDirs()[i]));
+
+                                }else{
+
+                                    System.out.println("The " + item.name + " doesn't fit anywhere.");
 
                                 }
 
