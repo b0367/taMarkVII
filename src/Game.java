@@ -30,10 +30,17 @@ public class Game {
     public static void doAction(Player player, Room room, String verb, String argument) {
 
         Item item = null;
-        String[] argumentList = argument.split("\\s+");
+        String[] argumentList = argument.toLowerCase().split("\\s+");
         for (String anArgumentList : argumentList) {
             for (Item i : player.inventory) {
                 if (i.getName().toLowerCase().equals(anArgumentList)) {
+                    item = i;
+                }
+            }
+        }
+        if (item == null) {
+            for (Item i : player.inventory) {
+                if (i.getName().toLowerCase().equals(argument.toLowerCase())) {
                     item = i;
                 }
             }
@@ -88,7 +95,8 @@ public class Game {
             case "set":
             case "use":
                 if (argument.split("\\s+").length == 3) {
-                    if (!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0]))) {
+                    if (!player.hasItem(Item.createBlankItem(argument.split("\\s+")[0])) && !player.hasItem(Item.createBlankItem(argument))) {
+
                         System.out.println("You do not have that item.");
                     } else {
                         for (int i = 0; i < room.getLocks().length; i++) {
